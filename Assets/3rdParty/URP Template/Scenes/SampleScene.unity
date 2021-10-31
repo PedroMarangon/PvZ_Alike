@@ -362,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269117195}
   - component: {fileID: 1269117196}
+  - component: {fileID: 1269117197}
   m_Layer: 0
   m_Name: PlayerInput
   m_TagString: Untagged
@@ -453,7 +454,19 @@ MonoBehaviour:
     m_ActionId: 5feb2f87-a85a-4652-9724-84904f13c1f6
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1269117197}
+        m_TargetAssemblyTypeName: S2P_Test.InputProvider, Assembly-CSharp
+        m_MethodName: GetMousePosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0d28a3f0-f61c-4f5b-afdc-556ff70741f5
     m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
@@ -461,6 +474,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1269117197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269117194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d63fb9a3e0ce5c41a7a0336a5857b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1606575721
 GameObject:
   m_ObjectHideFlags: 0

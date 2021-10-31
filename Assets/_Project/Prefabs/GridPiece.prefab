@@ -139,3 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff05400896bcfb54693063ed3251b0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glowColor: {r: 1.2235295, g: 5.992157, b: 1.7568628, a: 1}
