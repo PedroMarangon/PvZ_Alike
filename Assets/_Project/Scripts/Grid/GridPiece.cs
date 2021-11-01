@@ -12,14 +12,7 @@ namespace S2P_Test
 		private Transform visual;
 		private MeshRenderer rend;
 
-		public bool IsOccupied
-		{
-			get
-			{
-				Debug.Log(transform.childCount > 1, this);
-				return transform.childCount > 1;
-			}
-		}
+		public bool IsOccupied => transform.childCount > 1;
 
 		private void Awake()
 		{
