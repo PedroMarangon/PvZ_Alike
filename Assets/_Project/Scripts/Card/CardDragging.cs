@@ -4,29 +4,41 @@ using UnityEngine.EventSystems;
 
 namespace S2P_Test
 {
+	[RequireComponent(typeof(TowerCard))]
 	public class CardDragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 	{
 		private RectTransform rectTransform;
 		private Vector2 position;
 		private Camera cam;
+		private TowerCard towerCard;
 
 		private void Awake()
 		{
 			rectTransform = GetComponent<RectTransform>();
-
-			rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
-
+			towerCard = GetComponent<TowerCard>();
 			cam = Camera.main;
 		}
 
-		public void OnBeginDrag(PointerEventData eventData) => position = rectTransform.anchoredPosition;
+		public void OnBeginDrag(PointerEventData eventData)
+		{
+			if (!towerCard.CanMoveCard) return;
 
-		public void OnDrag(PointerEventData eventData) => rectTransform.anchoredPosition = InputProvider.MousePosition;
+			position = rectTransform.anchoredPosition;
+		}
+
+		public void OnDrag(PointerEventData eventData)
+		{
+			if (!towerCard.CanMoveCard) return;
+
+			rectTransform.anchoredPosition = InputProvider.MousePosition;
+		}
 
 		public void OnEndDrag(PointerEventData eventData)
 		{
-			rectTransform.anchoredPosition = position;
 
+			if (!towerCard.CanMoveCard) return;
+
+			rectTransform.anchoredPosition = position;
 			Ray ray = cam.ScreenPointToRay(InputProvider.MousePosition);
 
 			if (Physics.Raycast(ray, out RaycastHit hit))
@@ -36,6 +48,8 @@ namespace S2P_Test
 					piece.SetEmissionColor(Color.red);
 				}
 			}
+
+			towerCard?.StartCooldown();
 		}
 	}
 }
