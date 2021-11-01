@@ -39,7 +39,6 @@ namespace S2P_Test
 
 					GridPiece gridPiece = Instantiate(gridPiecePrefab, point, Quaternion.identity).GetComponent<GridPiece>();
 					gridPiece.Init(cellSize, ((x + y) % 2 == 1) ? color02 : color01);					
-					
 					Vector2Int gridPos = new Vector2Int(x, y);
 					
 					instantiatedGrid.Add(gridPos, gridPiece);

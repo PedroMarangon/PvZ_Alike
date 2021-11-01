@@ -18,13 +18,15 @@ namespace S2P_Test
 		[SerializeField] private TMP_Text cost;
 
 		public bool CanMoveCard { get; private set; } = true;
+		public GameObject Prefab => card.towerPrefab;
 
 		private void OnValidate()
 		{
 			if (!card) return;
-			icon.sprite = card.towerIcon;
-			title.text = card.towerName;
-			cost.text = $"{card.cost}";
+
+			if(icon) icon.sprite = card.towerIcon;
+			if(title) title.text = card.towerName;
+			if(cost) cost.text = $"{card.cost}";
 		}
 
 		public void StartCooldown()
