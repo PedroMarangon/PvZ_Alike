@@ -1,7 +1,5 @@
 // Maded by Pedro M Marangon
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 
 namespace S2P_Test
