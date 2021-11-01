@@ -1,26 +1,30 @@
 // Maded by Pedro M Marangon
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace S2P_Test
 {
-    public class TowerCard : MonoBehaviour
+	public class TowerCard : MonoBehaviour
     {
-		[SerializeField] private SO_TowerCard card;
-		[SerializeField] private Image icon;
-		[SerializeField] private Image cooldown;
-		[SerializeField] private TMP_Text title;
-		[SerializeField] private TMP_Text cost;
+		private const int COOLDOWN_FINISHED_VALUE = 0;
+		private const int COOLDOWN_START_VALUE = 1;
+
+		[Required, SerializeField] private SO_TowerCard card;
+		[Header("HUD Elements")]
+		[Required, SerializeField] private Image icon;
+		[Required, SerializeField] private Image cooldown;
+		[HorizontalLine]
+		[Required, SerializeField] private TMP_Text title;
+		[Required, SerializeField] private TMP_Text cost;
 
 		public bool CanMoveCard { get; private set; } = true;
 		public GameObject Prefab => card.towerPrefab;
 
-		private void OnValidate()
+		[Button]
+		private void UpdateCardVisual()
 		{
 			if (!card) return;
 
@@ -32,9 +36,9 @@ namespace S2P_Test
 		public void StartCooldown()
 		{
 			CanMoveCard = false;
-			cooldown.fillAmount = 1;
+			cooldown.fillAmount = COOLDOWN_START_VALUE;
 
-			cooldown.DOFillAmount(0, card.cooldown)
+			cooldown.DOFillAmount(COOLDOWN_FINISHED_VALUE, card.cooldown)
 				.SetEase(Ease.Linear)
 				.OnComplete(() => CanMoveCard = true);
 

@@ -9,11 +9,11 @@ namespace S2P_Test
 	[RequireComponent(typeof(CanvasGroup))]
 	public class CardDragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 	{
-		private RectTransform rectTransform;
-		private Vector2 position;
 		private Camera cam;
-		private TowerCard towerCard;
 		private CanvasGroup canvasGroup;
+		private RectTransform rectTransform;
+		private TowerCard towerCard;
+		private Vector2 position;
 
 		private void Awake()
 		{
