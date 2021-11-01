@@ -7,22 +7,25 @@ namespace S2P_Test
 	public class CardDragging : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 	{
 		private RectTransform rectTransform;
-		private Vector2 anchoredPosition;
+		private Vector2 position;
 		private Camera cam;
 
 		private void Awake()
 		{
 			rectTransform = GetComponent<RectTransform>();
+
+			rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
+
 			cam = Camera.main;
 		}
 
-		public void OnBeginDrag(PointerEventData eventData) => anchoredPosition = rectTransform.anchoredPosition;
+		public void OnBeginDrag(PointerEventData eventData) => position = rectTransform.anchoredPosition;
 
 		public void OnDrag(PointerEventData eventData) => rectTransform.anchoredPosition = InputProvider.MousePosition;
 
 		public void OnEndDrag(PointerEventData eventData)
 		{
-			rectTransform.anchoredPosition = anchoredPosition;
+			rectTransform.anchoredPosition = position;
 
 			Ray ray = cam.ScreenPointToRay(InputProvider.MousePosition);
 
