@@ -14,7 +14,6 @@ namespace S2P_Test
 		private const string HEADER_SPAWNER = "Spawner Generation";
 		#endregion
 
-
 		[Header(HEADER_GRID)]
 		[SerializeField] private Vector2Int gridSize = new Vector2Int(3, 2);
 		[Min(1), SerializeField] private float cellSize = 1;
