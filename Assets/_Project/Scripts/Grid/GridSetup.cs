@@ -28,6 +28,7 @@ namespace S2P_Test
 		
 		private Dictionary<Vector2Int, GridPiece> instantiatedGrid = new Dictionary<Vector2Int, GridPiece>();
 
+#if UNITY_EDITOR
 		#region Build / Destroy grid in Unity
 
 		[Button]
@@ -55,7 +56,6 @@ namespace S2P_Test
 		#endregion
 
 		#region Create Grid and Spawners
-
 		private void CreateGrid()
 		{
 			if (!gridPiecePrefab) return;
@@ -69,9 +69,10 @@ namespace S2P_Test
 				{
 					Vector3 point = transform.position + (new Vector3(x, 0, y) * cellSize);
 
-					GridPiece gridPiece = Instantiate(gridPiecePrefab, point, Quaternion.identity).GetComponent<GridPiece>();
+					GridPiece gridPiece = (GridPiece)UnityEditor.PrefabUtility.InstantiatePrefab(gridPiecePrefab);
 					gridPiece.gameObject.name = string.Format(gridPieceName, x, y);
 					gridPiece.transform.parent = parent;
+					gridPiece.transform.position = point;
 
 					Color gridColorPiece = (x + y) % 2 != 1 ? color01 : color02;
 					gridPiece.Init(cellSize, gridColorPiece);					
@@ -103,6 +104,7 @@ namespace S2P_Test
 		}
 
 		#endregion
+#endif
 
 #if UNITY_EDITOR
 		private void OnDrawGizmos()

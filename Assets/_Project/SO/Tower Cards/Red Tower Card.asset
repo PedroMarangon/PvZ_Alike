@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerIcon: {fileID: 21300000, guid: 7afefa60d0b339b4bb6491d063ff7546, type: 3}
   towerName: Red Tower
-  towerPrefab: {fileID: 2987201292214831485, guid: cb91333559570674786ad5de9cbe55d5, type: 3}
+  towerPrefab: {fileID: 2987201292214831485, guid: efbab213f955ff14f858e1062e869098, type: 3}
   cost: 6
   cooldown: 3

@@ -24,11 +24,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987188230526632132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 2.25, z: 0}
+  m_LocalPosition: {x: -0.683, y: 2.531, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5247249852163808481}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2128102295680038066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6035176940525577464}
+  m_Layer: 0
+  m_Name: TargetPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6035176940525577464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128102295680038066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5247249852163808481}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2987201292214831485
 GameObject:
@@ -43,7 +73,7 @@ GameObject:
   - component: {fileID: 2268168751975725090}
   - component: {fileID: 886793588053124981}
   m_Layer: 0
-  m_Name: TowerBase
+  m_Name: ArchedTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,6 +92,7 @@ Transform:
   m_Children:
   - {fileID: 8772733299197787538}
   - {fileID: 2704924092166379532}
+  - {fileID: 6035176940525577464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91,9 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc07966eab9f4f04c8e5c5e778a9a2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2547765462068491678, guid: f86a2e9721051244f9538ab265a91690, type: 3}
+  projectile: {fileID: 2547765462068491678, guid: d6b0ca4c1192941458982437b6546779, type: 3}
   spawnPoint: {fileID: 2704924092166379532}
-  projectileInterval: 2
+  targetPosition: {fileID: 6035176940525577464}
+  projectileInterval: 5
 --- !u!65 &886793588053124981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -132,13 +164,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4126145298209570509}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.2588186, w: 0.965926}
   m_LocalPosition: {x: 0, y: 2.25, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 0.65393}
   m_Children: []
   m_Father: {fileID: 8772733299197787538}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
 --- !u!33 &3787249779334711377
 MeshFilter:
   m_ObjectHideFlags: 0

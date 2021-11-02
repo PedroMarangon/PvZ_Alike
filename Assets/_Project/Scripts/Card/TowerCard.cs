@@ -12,13 +12,13 @@ namespace S2P_Test
 		private const int COOLDOWN_FINISHED_VALUE = 0;
 		private const int COOLDOWN_START_VALUE = 1;
 
-		[Required, SerializeField] private SO_TowerCard card;
+		[Required, SerializeField] private SO_TowerCard card = null;
 		[Header("HUD Elements")]
-		[Required, SerializeField] private Image icon;
-		[Required, SerializeField] private Image cooldown;
+		[Required, SerializeField] private Image icon = null;
+		[Required, SerializeField] private Image cooldown = null;
 		[HorizontalLine]
-		[Required, SerializeField] private TMP_Text title;
-		[Required, SerializeField] private TMP_Text cost;
+		[Required, SerializeField] private TMP_Text title = null;
+		[Required, SerializeField] private TMP_Text cost = null;
 
 		public bool CanMoveCard { get; private set; } = true;
 		public GameObject Prefab => card.towerPrefab;
