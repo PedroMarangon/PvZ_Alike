@@ -7,19 +7,29 @@ namespace S2P_Test
 {
 	public class GridSetup : MonoBehaviour
     {
-		[Header("Grid generation")]
+		#region Constant Variables
+		private const string GRID_PARENT_NAME = "Grid";
+		private const string SPAWNER_PARENT_NAME = "Spawners";
+		private const string HEADER_GRID = "Grid Generation";
+		private const string HEADER_SPAWNER = "Spawner Generation";
+		#endregion
+
+
+		[Header(HEADER_GRID)]
 		[SerializeField] private Vector2Int gridSize = new Vector2Int(3, 2);
 		[Min(1), SerializeField] private float cellSize = 1;
 		[Required, SerializeField] private GridPiece gridPiecePrefab;
+		[SerializeField] private string gridPieceName = "GridPiece_{0}-{1}";
 		[SerializeField] private Color color01 = Color.white;
 		[SerializeField] private Color color02 = Color.black;
-
-
-		[Header("Spawner generation")]
+		[Header(HEADER_SPAWNER)]
 		[MaxValue(0), SerializeField] private float spawnerXPos = -10;
+		[SerializeField] private string enemySpawnerName = "EnemySpawner_Row-{0}";
 		[Required, SerializeField] private EnemySpawner enemySpawnerPrefab;
-
+		
 		private Dictionary<Vector2Int, GridPiece> instantiatedGrid = new Dictionary<Vector2Int, GridPiece>();
+
+		#region Build / Destroy grid in Unity
 
 		[Button]
 		private void BuildGrid()
@@ -29,19 +39,30 @@ namespace S2P_Test
 			CreateGrid();
 			CreateSpawners();
 		}
+
 		[Button]
 		private void DestroyGrid()
 		{
-			for(int i = transform.childCount-1; i >= 0; i--)
+			if (GameObject.Find(GRID_PARENT_NAME) != null) DestroyImmediate(GameObject.Find(GRID_PARENT_NAME));
+			if (GameObject.Find(SPAWNER_PARENT_NAME) != null) DestroyImmediate(GameObject.Find(SPAWNER_PARENT_NAME));
+
+			for (int i = transform.childCount-1; i >= 0; i--)
 			{
 				DestroyImmediate(transform.GetChild(i).gameObject);
 			}
 			instantiatedGrid = new Dictionary<Vector2Int, GridPiece>();
 		}
 
+		#endregion
+
+		#region Create Grid and Spawners
+
 		private void CreateGrid()
 		{
 			if (!gridPiecePrefab) return;
+
+			Transform parent = new GameObject(GRID_PARENT_NAME).transform;
+			parent.position = transform.position;
 
 			for (int x = 0; x < gridSize.x; x++)
 			{
@@ -50,8 +71,8 @@ namespace S2P_Test
 					Vector3 point = transform.position + (new Vector3(x, 0, y) * cellSize);
 
 					GridPiece gridPiece = Instantiate(gridPiecePrefab, point, Quaternion.identity).GetComponent<GridPiece>();
-					gridPiece.gameObject.name = $"GridPiece_({x},{y})";
-					gridPiece.transform.parent = transform;
+					gridPiece.gameObject.name = string.Format(gridPieceName, x, y);
+					gridPiece.transform.parent = parent;
 
 					Color gridColorPiece = (x + y) % 2 != 1 ? color01 : color02;
 					gridPiece.Init(cellSize, gridColorPiece);					
@@ -66,17 +87,23 @@ namespace S2P_Test
 		{
 			if (!enemySpawnerPrefab) return;
 
+			Transform parent = new GameObject(SPAWNER_PARENT_NAME).transform;
+			parent.position = transform.position + (Vector3.right * spawnerXPos);
+
 			for (int y = 0; y < gridSize.y; y++)
 			{
 				Vector3 point = transform.position;
 				point.z += y * cellSize;
 				point.x += spawnerXPos;
 
+
 				GameObject instantiatedSpawner = Instantiate(enemySpawnerPrefab, point, Quaternion.identity).gameObject;
-				instantiatedSpawner.name = $"{enemySpawnerPrefab.name} - ROW {y + 1}";
-				instantiatedSpawner.transform.parent = transform;
+				instantiatedSpawner.name = string.Format(enemySpawnerName, (y + 1));
+				instantiatedSpawner.transform.parent = parent;
 			}
 		}
+
+		#endregion
 
 #if UNITY_EDITOR
 		private void OnDrawGizmos()
