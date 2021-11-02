@@ -24,7 +24,6 @@ namespace S2P_Test
 		[Header(HEADER_SPAWNER)]
 		[MaxValue(0), SerializeField] private float spawnerXPos = -10;
 		[SerializeField] private string enemySpawnerName = "EnemySpawner_Row-{0}";
-		[Required, SerializeField] private EnemySpawner enemySpawnerPrefab;
 		
 		private Dictionary<Vector2Int, GridPiece> instantiatedGrid = new Dictionary<Vector2Int, GridPiece>();
 
@@ -34,7 +33,7 @@ namespace S2P_Test
 		[Button]
 		private void BuildGrid()
 		{
-			if (transform.childCount > 0) DestroyGrid();
+			DestroyGrid();
 
 			CreateGrid();
 			CreateSpawners();
@@ -46,10 +45,6 @@ namespace S2P_Test
 			if (GameObject.Find(GRID_PARENT_NAME) != null) DestroyImmediate(GameObject.Find(GRID_PARENT_NAME));
 			if (GameObject.Find(SPAWNER_PARENT_NAME) != null) DestroyImmediate(GameObject.Find(SPAWNER_PARENT_NAME));
 
-			for (int i = transform.childCount-1; i >= 0; i--)
-			{
-				DestroyImmediate(transform.GetChild(i).gameObject);
-			}
 			instantiatedGrid = new Dictionary<Vector2Int, GridPiece>();
 		}
 
@@ -85,10 +80,9 @@ namespace S2P_Test
 
 		private void CreateSpawners()
 		{
-			if (!enemySpawnerPrefab) return;
-
 			Transform parent = new GameObject(SPAWNER_PARENT_NAME).transform;
 			parent.position = transform.position + (Vector3.right * spawnerXPos);
+
 
 			for (int y = 0; y < gridSize.y; y++)
 			{
@@ -96,17 +90,16 @@ namespace S2P_Test
 				point.z += y * cellSize;
 				point.x += spawnerXPos;
 
-
-				GameObject instantiatedSpawner = Instantiate(enemySpawnerPrefab, point, Quaternion.identity).gameObject;
-				instantiatedSpawner.name = string.Format(enemySpawnerName, (y + 1));
-				instantiatedSpawner.transform.parent = parent;
+				GameObject spawnerPos = new GameObject(string.Format(enemySpawnerName, (y + 1)));
+				spawnerPos.transform.parent = parent;
 			}
+
+			parent.gameObject.AddComponent<EnemySpawner>().SetupSpawnerList();
+
 		}
 
 		#endregion
-#endif
 
-#if UNITY_EDITOR
 		private void OnDrawGizmos()
 		{
 			if (transform.childCount > 0) return;

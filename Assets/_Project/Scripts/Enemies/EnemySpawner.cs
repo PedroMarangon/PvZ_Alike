@@ -1,19 +1,23 @@
 ﻿// Maded by Pedro M Marangon
+using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace S2P_Test
 {
 	public class EnemySpawner : MonoBehaviour
 	{
-		// Use this for initialization
-		void Start()
-		{
+		[SerializeField] private List<Transform> spawnPoints = new List<Transform>();
+		[MinMaxSlider(0.5f, 7f), SerializeField] private Vector2 timeBetweenSpawn = new Vector2(2, 3);
 
-		}
-
-		// Update is called once per frame
-		void Update()
+		public void SetupSpawnerList()
 		{
+			spawnPoints.Clear();
+
+			foreach (Transform child in transform)
+			{
+				spawnPoints.Add(child);
+			}
 
 		}
 	}
