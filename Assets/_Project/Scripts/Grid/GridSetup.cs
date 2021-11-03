@@ -12,6 +12,7 @@ namespace S2P_Test
 		private const string SPAWNER_PARENT_NAME = "Spawners";
 		private const string HEADER_GRID = "Grid Generation";
 		private const string HEADER_SPAWNER = "Spawner Generation";
+		private const string HEADER_DEBUG = "Debugging";
 		#endregion
 
 		[Header(HEADER_GRID)]
@@ -19,11 +20,13 @@ namespace S2P_Test
 		[Min(1), SerializeField] private float cellSize = 1;
 		[Required, SerializeField] private GridPiece gridPiecePrefab;
 		[SerializeField] private string gridPieceName = "GridPiece_{0}-{1}";
-		[SerializeField] private Color color01 = Color.white;
-		[SerializeField] private Color color02 = Color.black;
 		[Header(HEADER_SPAWNER)]
 		[MaxValue(0), SerializeField] private float spawnerXPos = -10;
 		[SerializeField] private string enemySpawnerName = "EnemySpawner_Row-{0}";
+		[HorizontalLine]
+		[Header(HEADER_DEBUG, order = 2)]
+		[SerializeField] private Color color01 = Color.white;
+		[SerializeField] private Color color02 = Color.black;
 		
 		private Dictionary<Vector2Int, GridPiece> instantiatedGrid = new Dictionary<Vector2Int, GridPiece>();
 
@@ -69,8 +72,7 @@ namespace S2P_Test
 					gridPiece.transform.parent = parent;
 					gridPiece.transform.position = point;
 
-					Color gridColorPiece = (x + y) % 2 != 1 ? color01 : color02;
-					gridPiece.Init(cellSize, gridColorPiece);					
+					gridPiece.Init(cellSize);					
 					
 					Vector2Int gridPos = new Vector2Int(x, y);
 					instantiatedGrid.Add(gridPos, gridPiece);

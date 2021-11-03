@@ -6,8 +6,6 @@ namespace S2P_Test
 	[RequireComponent(typeof(BoxCollider))]
 	public class GridPiece : MonoBehaviour
 	{
-		private const string BASE_COLOR = "_BaseColor";
-
 		private BoxCollider boxCollider;
 		private Transform visual;
 		private MeshRenderer rend;
@@ -24,26 +22,13 @@ namespace S2P_Test
 		}
 
 		public void Occupy(GameObject prefab) => Instantiate(prefab, transform.position, Quaternion.identity, transform);
-		public void Desocupy()
-		{
-			if (!IsOccupied) return;
-			Destroy(transform.GetChild(1).gameObject);
-		}
 
-		public void Init(float size, Color color)
+		public void Init(float size)
 		{
-
 			GetVariables();
 
 			boxCollider.size = new Vector3(size, boxCollider.size.y, size);
 			visual.localScale = boxCollider.size;
-
-			//Change colors based on the grid position
-			MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
-			rend.GetPropertyBlock(propBlock);
-			propBlock.SetColor(BASE_COLOR, color);
-			rend.SetPropertyBlock(propBlock);
-
 		}
 	}
 }
