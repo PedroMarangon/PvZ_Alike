@@ -25,6 +25,7 @@ namespace S2P_Test
 		public void OnPointerDown(PointerEventData eventData)
 		{
 			if (towerCard.IsInCooldown || towerCard.DoesHaveEnoughMoney) return;
+			if (towerManager.IsReadyToPlacePrefab) moneySystem.GiveMoneyBack();
 			towerManager?.PrepareForPlacement(towerCard.Prefab, towerCard);
 			moneySystem?.RemoveMoney(towerCard.Cost);
 		}

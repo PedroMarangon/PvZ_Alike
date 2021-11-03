@@ -1601,7 +1601,7 @@ MonoBehaviour:
   maxMoney: 999999
   startingMoney: 0
   increaseInterval: 1
-  incrementAmount: 100
+  incrementAmount: 5
   moneyText: {fileID: 1741947896}
 --- !u!1001 &604707164
 PrefabInstance:

@@ -16,6 +16,7 @@ namespace S2P_Test
 
 		public Action<int> OnMoneyIncrease;
 		private int money;
+		private int moneyToGiveBackIfChange;
 
 		private void Awake()
 		{
@@ -32,8 +33,17 @@ namespace S2P_Test
 				.SetLoops(-1);
 		}
 
+		public void GiveMoneyBack()
+		{
+			money += moneyToGiveBackIfChange;
+			money = Mathf.Clamp(money, 0, maxMoney);
+			OnMoneyIncrease?.Invoke(money);
+		}
+
 		public void RemoveMoney(int amnt)
 		{
+			moneyToGiveBackIfChange = amnt;
+
 			money -= amnt;
 			money = Mathf.Clamp(money, 0, maxMoney);
 			OnMoneyIncrease?.Invoke(money);

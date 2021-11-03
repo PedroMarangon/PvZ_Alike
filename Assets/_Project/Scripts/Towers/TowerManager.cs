@@ -29,6 +29,8 @@ namespace S2P_Test
 		private GameObject prefab;
 		private RaycastHit hit;
 
+		public bool IsReadyToPlacePrefab => prefab != null;
+
 		private void Awake()
 		{
 			cam = Camera.main;

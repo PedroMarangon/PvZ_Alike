@@ -38,6 +38,7 @@ namespace S2P_Test
 		private void Awake()
 		{
 			CheckMoney(0);
+			UpdateCardVisual();
 			FindObjectOfType<MoneySystem>().OnMoneyIncrease += CheckMoney;
 		}
 
