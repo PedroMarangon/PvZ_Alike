@@ -1,10 +1,8 @@
 // Maded by Pedro M Marangon
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
-using System;
+using NaughtyAttributes;
 using System.Collections;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace S2P_Test
@@ -12,6 +10,7 @@ namespace S2P_Test
 	public class EnemyWalker : MonoBehaviour, IEnemyLogic
     {
 		private const string ANIM_ATK = "Zombie_Atk";
+		private const string ANIM_WALK = "Zombie_Walk";
 		private const string ANIM_DEATH = "Zombie_Death";
 		private const string HEADER_MOVEMENT = "Movement";
 		private const string HEADER_CHECK_STOPPING_POINT = "Check to detect stopping point";
@@ -26,6 +25,8 @@ namespace S2P_Test
 		[SerializeField] private float checkRate = 0.2f;
 		[Header(HEADER_REFERENCES)]
 		[SerializeField] private Animator anim = null;
+		[Required, SerializeField] private EnemyAttack attack = null;
+
 		private Collider col;
 		private Health health;
 		private bool isDead;
@@ -33,7 +34,7 @@ namespace S2P_Test
 		private RaycastHit hit;
 
 		public float Speed => speed;
-		public float Damage => Damage;
+		public float Damage => attack.Damage;
 
 		private void Awake()
 		{
@@ -53,13 +54,20 @@ namespace S2P_Test
 		{
 			if (this == null) yield break;
 
-			ray = new Ray(transform.position + Vector3.up * checkHeight, Vector3.right);
-			if (Physics.Raycast(ray, out hit, checkDistance))
+			if (!attack.IsTowerInFront())
 			{
-				Vector3 position = hit.collider.transform.position + (Vector3.left * stoppingDistance);
-				
-				MoveToPosition(position);
+				ray = new Ray(transform.position + Vector3.up * checkHeight, Vector3.right);
+				if (Physics.Raycast(ray, out hit, checkDistance))
+				{
+					Vector3 position = hit.collider.transform.position + (Vector3.left * stoppingDistance);
+					position.y = transform.position.y;
+					position.z = transform.position.z;
+
+					MoveToPosition(position);
+				}
 			}
+			else StopMoving();
+
 
 			yield return new WaitForSeconds(checkRate);
 
@@ -73,6 +81,7 @@ namespace S2P_Test
 			DOTween.Kill(transform);
 			if (isDead) return;
 
+			anim.PlayAnimationIfNotPlayingAlready(ANIM_WALK);
 			transform.DOMove(pos, Speed)
 				.SetSpeedBased(true)
 				.OnComplete(() => StopMoving());
@@ -80,7 +89,10 @@ namespace S2P_Test
 
 		private void StopMoving()
 		{
-			anim?.CrossFade(ANIM_ATK, 0.1f);
+			DOTween.Kill(transform);
+
+			if(attack.IsTowerInFront())
+				anim.PlayAnimationIfNotPlayingAlready(ANIM_ATK);
 		}
 
 		#endregion
@@ -109,22 +121,7 @@ namespace S2P_Test
 			Gizmos.DrawLine(startPos, startPos + (Vector3.right * checkDistance));
 		}
 #endif
-	}
 
-
-	public class EnemyAttack : MonoBehaviour
-	{
-		// Use this for initialization
-		void Start()
-		{
-
-		}
-
-		// Update is called once per frame
-		void Update()
-		{
-
-		}
 	}
 
 }

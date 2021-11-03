@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 689801912619286516}
   - component: {fileID: 5706044478431183279}
+  - component: {fileID: -6719625571999683842}
   - component: {fileID: 9108052219241114209}
   - component: {fileID: 6908616794285118671}
   m_Layer: 8
@@ -31,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2335450245894370614}
+  - {fileID: 1329809836573753386}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,6 +54,25 @@ MonoBehaviour:
   checkHeight: 1
   checkRate: 0.2
   anim: {fileID: 2335450245904145110}
+  attack: {fileID: -6719625571999683842}
+--- !u!114 &-6719625571999683842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643310315721618810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31e07908d2574742b2817f1c274e454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkPoint: {fileID: 1329809836573753386}
+  atkRadius: 0.25
+  whatIsTower:
+    serializedVersion: 2
+    m_Bits: 64
+  <Damage>k__BackingField: 3
 --- !u!114 &9108052219241114209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,18 +101,6 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0.35, y: 1.5, z: 0}
---- !u!114 &198532045220531680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2335450245894662422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c8eb73bc7b835449e99e4f3875d5c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5099296440694683772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +113,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d41755c38e462b48a774f2f916d9431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7517043523016972076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1329809836573753386}
+  m_Layer: 8
+  m_Name: Atk Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1329809836573753386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7517043523016972076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.25, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 689801912619286516}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2335450245894762422
 PrefabInstance:
   m_ObjectHideFlags: 0
