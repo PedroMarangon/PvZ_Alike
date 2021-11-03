@@ -9,6 +9,5 @@ namespace S2P_Test
 		float Damage { get; }
 
 		void MoveToPosition(Vector3 pos);
-		void MoveToPosition(Transform targetPos);
 	}
 }

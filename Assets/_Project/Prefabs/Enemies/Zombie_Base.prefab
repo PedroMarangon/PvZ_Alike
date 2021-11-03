@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 689801912619286516}
   - component: {fileID: 5706044478431183279}
+  - component: {fileID: 9108052219241114209}
+  - component: {fileID: 6908616794285118671}
   m_Layer: 0
   m_Name: Zombie_Base
   m_TagString: Untagged
@@ -44,10 +46,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802a9a2383decb74fbbf505d0c5f8de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  checkDistance: 32
-  checkHeight: 1
+  speed: 0.5
   stoppingDistance: 2
+  checkDistance: 30
+  checkHeight: 1
+  checkRate: 0.2
+  anim: {fileID: 2335450245904145110}
+--- !u!114 &9108052219241114209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643310315721618810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2b70408bd019d4ba684171a832957f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  health: 10
+--- !u!136 &6908616794285118671
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643310315721618810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0.35, y: 1.5, z: 0}
+--- !u!114 &198532045220531680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335450245894662422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c8eb73bc7b835449e99e4f3875d5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5099296440694683772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335450245894662422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d41755c38e462b48a774f2f916d9431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2335450245894762422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -125,8 +181,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
+--- !u!1 &2335450245894662422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
+  m_PrefabInstance: {fileID: 2335450245894762422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2335450245894370614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
+  m_PrefabInstance: {fileID: 2335450245894762422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2335450245904145110 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
   m_PrefabInstance: {fileID: 2335450245894762422}
   m_PrefabAsset: {fileID: 0}

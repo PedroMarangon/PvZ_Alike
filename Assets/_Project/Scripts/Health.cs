@@ -1,10 +1,11 @@
 ﻿// Maded by Pedro M Marangon
 using NaughtyAttributes;
+using System;
 using UnityEngine;
 
 namespace S2P_Test
 {
-	public class HealthSystem : MonoBehaviour
+	public class Health : MonoBehaviour
 	{
 		[SerializeField] protected int maxHealth = 10;
 		[ProgressBar("maxHealth", EColor.Red), SerializeField, ReadOnly] protected int health;
@@ -18,7 +19,7 @@ namespace S2P_Test
 		/// <summary>
 		/// The current amount of health
 		/// </summary>
-		public int Health => health;
+		public int HP => health;
 		/// <summary>
 		/// The percentage amount of health (goes from 0-1)
 		/// </summary>
@@ -38,6 +39,9 @@ namespace S2P_Test
 		}
 #endif
 
+		public Action OnDeath;
+		public Action OnHealthChanged;
+
 		protected virtual void Start() => health = maxHealth;
 		/// <summary>
 		/// Applies armor to the damage and then damage by that amount
@@ -50,6 +54,8 @@ namespace S2P_Test
 		/// <param name="amnt"></param>
 		public virtual void SetHealth(int amnt)
 		{
+			OnHealthChanged?.Invoke();
+
 			health = Mathf.Clamp(amnt, 0, maxHealth);
 			if (health <= 0) Die();
 		}
@@ -57,6 +63,10 @@ namespace S2P_Test
 		/// <summary>
 		/// Kills the object
 		/// </summary>
-		public virtual void Die() => Destroy(gameObject);
+		public virtual void Die()
+		{
+			if(OnDeath != null) OnDeath.Invoke();
+			else Destroy(gameObject);
+		}
 	}
 }

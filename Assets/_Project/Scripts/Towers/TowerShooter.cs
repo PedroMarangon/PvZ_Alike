@@ -13,6 +13,7 @@ namespace S2P_Test
 		[Required, SerializeField] private Transform spawnPoint = null;
 		[SerializeField] private Transform targetPosition = null;
 		[SerializeField] private float projectileInterval = 2f;
+		[Min(1), SerializeField] private int damage = 1;
 
 		private void Start()
 		{
@@ -26,7 +27,7 @@ namespace S2P_Test
 		{
 			var inst = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
 			if (inst.TryGetComponent(out IProjectile proj))
-				proj?.Init(targetPosition);
+				proj?.Init(targetPosition, damage);
 		}
 
 		private bool DoesImplementInterface(GameObject go) => go != null && go.TryGetComponent(out IProjectile _);

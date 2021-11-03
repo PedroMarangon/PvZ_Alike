@@ -7,14 +7,21 @@ namespace S2P_Test
 	{
 		[SerializeField] private float speed = 5f;
 		[SerializeField] private float timeToDestroy = 3f;
+		private int damage;
 
 		public float Speed => speed;
+		public int Damage => damage;
 		public float TimeToDestroy => timeToDestroy;
 
-		public void Init(Transform targetPos) => Destroy(gameObject, timeToDestroy);
+		public void Init(Transform targetPos, int dmg)
+		{
+			damage = dmg;
+			Destroy(gameObject, timeToDestroy);
+		}
 
 		public void ProcessCollision(GameObject other)
 		{
+			if (other.TryGetComponent(out Health health)) health.Damage(damage);
 			Destroy(gameObject);
 		}
 
