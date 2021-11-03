@@ -30,6 +30,7 @@ namespace S2P_Test
 		private GameObject prefab;
 		private RaycastHit hit;
 		private IGridMoveable crntSelectedGridMoveable;
+		private bool isShowingPreview;
 
 		public bool IsReadyToPlacePrefab => prefab != null;
 
@@ -54,7 +55,7 @@ namespace S2P_Test
 		}
 		private void OnMouseClick()
 		{
-			if (hit.collider == null) return;
+			if (hit.collider == null || !isShowingPreview) return;
 
 			if (hit.collider.TryGetComponent(out GridPiece piece))
 			{
@@ -72,6 +73,7 @@ namespace S2P_Test
 						crntSelectedGridMoveable = null;
 					}
 					meshVisualization.enabled = false;
+					isShowingPreview = false;
 				}
 			}
 		}
@@ -115,6 +117,7 @@ namespace S2P_Test
 		}
 		private void ActivateMeshVisualization(GameObject go)
 		{
+			isShowingPreview = true;
 			var meshFilter = go.GetComponentInChildren<MeshFilter>();
 			if (meshFilter)
 			{

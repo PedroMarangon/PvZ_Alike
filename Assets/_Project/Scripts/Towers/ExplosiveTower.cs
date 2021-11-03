@@ -1,6 +1,5 @@
 // Maded by Pedro M Marangon
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace S2P_Test
@@ -15,6 +14,14 @@ namespace S2P_Test
 		private void OnValidate()
 		{
 			GetComponent<Collider>().isTrigger = true;
+		}
+
+		private void Awake()
+		{
+			var s = DOTween.Sequence()
+				.AppendCallback(() => GetComponent<Collider>().enabled = false)
+				.AppendInterval(0.1f)
+				.AppendCallback(() => GetComponent<Collider>().enabled = true);
 		}
 
 		private void OnTriggerEnter(Collider other)

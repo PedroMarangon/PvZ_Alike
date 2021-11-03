@@ -506,7 +506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129398967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.5, y: 0, z: -4}
+  m_LocalPosition: {x: -11, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1321852924}
@@ -1121,7 +1121,7 @@ MonoBehaviour:
   cellSize: 2
   gridPiecePrefab: {fileID: 795982405327889092, guid: a1c2dc79d2c72fd408d4e617b19def61, type: 3}
   gridPieceName: GridPiece_{0}-{1}
-  spawnerXPos: -7.5
+  spawnerXPos: -8
   enemySpawnerName: Row_{0}
   color01: {r: 0, g: 0.8, b: 0.23370782, a: 1}
   color02: {r: 0, g: 0.509434, b: 0.14983355, a: 1}
