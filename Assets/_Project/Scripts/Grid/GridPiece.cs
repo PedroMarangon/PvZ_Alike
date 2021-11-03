@@ -24,6 +24,11 @@ namespace S2P_Test
 		}
 
 		public void Occupy(GameObject prefab) => Instantiate(prefab, transform.position, Quaternion.identity, transform);
+		public void Desocupy()
+		{
+			if (!IsOccupied) return;
+			Destroy(transform.GetChild(1).gameObject);
+		}
 
 		public void Init(float size, Color color)
 		{

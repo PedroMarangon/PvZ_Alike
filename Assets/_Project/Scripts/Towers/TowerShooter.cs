@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace S2P_Test
 {
-	public class TowerShooter : MonoBehaviour
+	public class TowerShooter : MonoBehaviour, IGridMoveable
 	{
 		[ValidateInput("DoesImplementInterface", "The GameObject associated must have a component that implements IProjectile!!")]
 		[Required, SerializeField] private GameObject projectile = null;
@@ -46,6 +46,16 @@ namespace S2P_Test
 				Gizmos.DrawSphere(targetPosition.position, 0.25f);
 			}
 		}
+
+		public void Move(Transform newGridParent)
+		{
+			transform.parent = newGridParent;
+			transform.localPosition = Vector3.zero;
+		}
 	}
 
+	public interface IGridMoveable
+	{
+		void Move(Transform newGridParent);
+	}
 }

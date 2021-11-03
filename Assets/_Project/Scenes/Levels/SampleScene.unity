@@ -482,7 +482,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129398967}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c78eeeecaaa4464ca10e2297bb2a4c6, type: 3}
   m_Name: 
@@ -3262,6 +3262,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0d28a3f0-f61c-4f5b-afdc-556ff70741f5
     m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1269117197}
+        m_TargetAssemblyTypeName: S2P_Test.InputProvider, Assembly-CSharp
+        m_MethodName: MouseRightClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1347b4b9-b6b1-47b7-815e-dd9c604cdde3
+    m_ActionName: Player/Click1[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -5016,9 +5032,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshVisualization: {fileID: 284642761}
   visualTransform: {fileID: 1302187520}
-  mask:
+  gridMask:
     serializedVersion: 2
     m_Bits: 1
+  towerMask:
+    serializedVersion: 2
+    m_Bits: 64
   available:
     bgColor: {r: 0.12390661, g: 1, b: 0, a: 0.5019608}
     hightlightColor: {r: 2.8895547, g: 11.984314, b: 0.81568646, a: 1}

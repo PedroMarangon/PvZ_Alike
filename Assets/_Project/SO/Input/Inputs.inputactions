@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Right Click",
+                    "type": "Button",
+                    "id": "1347b4b9-b6b1-47b7-815e-dd9c604cdde3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Mouse Position",
                     "type": "Value",
                     "id": "0d28a3f0-f61c-4f5b-afdc-556ff70741f5",
@@ -42,6 +50,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Mouse Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8aa84ff5-c2f0-40a3-b2e7-fd6c67b3d588",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Right Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
