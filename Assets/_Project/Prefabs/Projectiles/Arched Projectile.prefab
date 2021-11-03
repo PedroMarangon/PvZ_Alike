@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -5887245558201359642}
   - component: {fileID: 1878956534333256977}
   - component: {fileID: 7455371001125994479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arched Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3467166908414958869}
   - component: {fileID: 7447135112364349606}
   - component: {fileID: 4264195039346982363}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

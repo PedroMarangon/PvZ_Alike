@@ -7,6 +7,7 @@ namespace S2P_Test
 	{
 		[SerializeField] private float speed = 5f;
 		[SerializeField] private float timeToDestroy = 3f;
+
 		private int damage;
 
 		public float Speed => speed;
