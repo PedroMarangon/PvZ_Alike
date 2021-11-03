@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03d08c7ba9226fa4ea284f4f6d6492dc, type: 3}
-  m_Name: Yellow Tower Card
+  m_Name: Explosive
   m_EditorClassIdentifier: 
   towerIcon: {fileID: 21300000, guid: e9fc00e1eead4dc4fa2d0392adef86c4, type: 3}
-  towerName: Yellow Tower
-  towerPrefab: {fileID: 2987201292214831485, guid: cb91333559570674786ad5de9cbe55d5, type: 3}
+  towerName: Explosive Tower
+  towerPrefab: {fileID: 3098147356187010617, guid: ef4e03c1b92f0be489c1de63a90eab68, type: 3}
   cost: 20
   cooldown: 5

@@ -21,7 +21,7 @@ namespace S2P_Test
 		{
 			if(other.TryGetComponent(out IEnemyLogic _))
 			{
-				Collider[] enemies = Physics.OverlapSphere(transform.position, explosionRadius, explosionLayerMask);
+				Collider[] enemies = Physics.OverlapBox(transform.position, Vector3.one * explosionRadius, Quaternion.identity, explosionLayerMask);
 
 				foreach (var enemy in enemies)
 				{
@@ -35,7 +35,9 @@ namespace S2P_Test
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.red;
-			Gizmos.DrawWireSphere(transform.position, explosionRadius);
+			Gizmos.DrawWireCube(transform.position, Vector3.one * explosionRadius * 2);
+
+
 		}
 
 		public void Move(Transform newGridParent)

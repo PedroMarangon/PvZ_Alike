@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03d08c7ba9226fa4ea284f4f6d6492dc, type: 3}
-  m_Name: Red Tower Card
+  m_Name: Grenade
   m_EditorClassIdentifier: 
   towerIcon: {fileID: 21300000, guid: 7afefa60d0b339b4bb6491d063ff7546, type: 3}
   towerName: Grenade Launcher
