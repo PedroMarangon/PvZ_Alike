@@ -91,6 +91,7 @@ namespace S2P_Test
 				point.x += spawnerXPos;
 
 				GameObject spawnerPos = new GameObject(string.Format(enemySpawnerName, (y + 1)));
+				spawnerPos.transform.position = point;
 				spawnerPos.transform.parent = parent;
 			}
 
