@@ -40,22 +40,25 @@ namespace S2P_Test
 #endif
 
 		public Action OnDeath;
-		public Action OnHealthChanged;
+		public Action OnDamaged;
 
 		protected virtual void Start() => health = maxHealth;
 		/// <summary>
 		/// Applies armor to the damage and then damage by that amount
 		/// </summary>
 		/// <param name="amnt">The intented amount do damage (the armor algorithm will change this value)</param>
-		public virtual void Damage(int amnt) => SetHealth(health - amnt);
+		public virtual void Damage(int amnt)
+		{
+			OnDamaged?.Invoke();
+			SetHealth(health - amnt);
+		}
+
 		/// <summary>
 		/// Sets the health to a specific value. If the health is less than or equal to 0, kills this object
 		/// </summary>
 		/// <param name="amnt"></param>
 		public virtual void SetHealth(int amnt)
 		{
-			OnHealthChanged?.Invoke();
-
 			health = Mathf.Clamp(amnt, 0, maxHealth);
 			if (health <= 0) Die();
 		}

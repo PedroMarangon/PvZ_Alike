@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &129398968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +391,7 @@ MonoBehaviour:
   - {fileID: 1488933101}
   enemies:
   - {fileID: 643310315721618810, guid: 2faedf38f9e91ea41b6b62b19d4e0910, type: 3}
+  - {fileID: 643310315721618810, guid: adb9742cd6f73464e8159e4c4b1b877f, type: 3}
   timeBetweenSpawn: {x: 5, y: 7}
   startDelay: 0
 --- !u!4 &129398969

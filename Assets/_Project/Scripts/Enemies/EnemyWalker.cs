@@ -1,6 +1,7 @@
 // Maded by Pedro M Marangon
 using DG.Tweening;
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -9,9 +10,6 @@ namespace S2P_Test
 {
 	public class EnemyWalker : MonoBehaviour, IEnemyLogic
     {
-		private const string ANIM_ATK = "Zombie_Atk";
-		private const string ANIM_WALK = "Zombie_Walk";
-		private const string ANIM_DEATH = "Zombie_Death";
 		private const string HEADER_MOVEMENT = "Movement";
 		private const string HEADER_CHECK_STOPPING_POINT = "Check to detect stopping point";
 		private const string HEADER_REFERENCES = "References";
@@ -24,7 +22,6 @@ namespace S2P_Test
 		[SerializeField] private float checkHeight = 1;
 		[SerializeField] private float checkRate = 0.2f;
 		[Header(HEADER_REFERENCES)]
-		[SerializeField] private Animator anim = null;
 		[Required, SerializeField] private EnemyAttack attack = null;
 
 		private Collider col;
@@ -36,16 +33,18 @@ namespace S2P_Test
 		public float Speed => speed;
 		public float Damage => attack.Damage;
 
+		public Action OnStartMoving;
+		public Action OnStopMoving;
+
 		private void Awake()
 		{
-			health = GetComponent<Health>();
 			col = GetComponent<Collider>();
+			health = GetComponent<Health>();
 		}
 
 		private void Start()
         {
 			health.OnDeath += OnDead;
-			health.OnHealthChanged += OnDamage;
 
 			StartCoroutine(CheckForStoppingPoint());
 		}
@@ -81,7 +80,7 @@ namespace S2P_Test
 			DOTween.Kill(transform);
 			if (isDead) return;
 
-			anim.PlayAnimationIfNotPlayingAlready(ANIM_WALK);
+			OnStartMoving?.Invoke();
 			transform.DOMove(pos, Speed)
 				.SetSpeedBased(true)
 				.OnComplete(() => StopMoving());
@@ -92,7 +91,7 @@ namespace S2P_Test
 			DOTween.Kill(transform);
 
 			if(attack.IsTowerInFront())
-				anim.PlayAnimationIfNotPlayingAlready(ANIM_ATK);
+				OnStopMoving?.Invoke();
 		}
 
 		#endregion
@@ -102,13 +101,6 @@ namespace S2P_Test
 			isDead = true;
 			StopCoroutine(CheckForStoppingPoint());
 			Destroy(col);
-
-			anim?.Play(ANIM_DEATH);
-		}
-
-		private void OnDamage()
-		{
-			
 		}
 
 

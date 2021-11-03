@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace S2P_Test
+namespace S2P_Test.Editor
 {
     [InitializeOnLoad]
     public static class HierarchySectionHeader
