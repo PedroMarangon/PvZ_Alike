@@ -20,8 +20,10 @@ namespace S2P_Test
 		[Required, SerializeField] private TMP_Text title = null;
 		[Required, SerializeField] private TMP_Text cost = null;
 
-		public bool CanMoveCard { get; private set; } = true;
+		public bool IsInCooldown { get; private set; } = false;
+		public bool DoesHaveEnoughMoney { get; private set; } = false;
 		public GameObject Prefab => card.towerPrefab;
+		public int Cost => card.cost;
 
 		[Button]
 		private void UpdateCardVisual()
@@ -33,14 +35,29 @@ namespace S2P_Test
 			if(cost) cost.text = $"{card.cost}";
 		}
 
+		private void Awake()
+		{
+			CheckMoney(0);
+			FindObjectOfType<MoneySystem>().OnMoneyIncrease += CheckMoney;
+		}
+
+		private void CheckMoney(int money)
+		{
+			if (IsInCooldown) return;
+
+			DoesHaveEnoughMoney = card.cost > money;
+
+			cooldown.fillAmount = DoesHaveEnoughMoney ? COOLDOWN_START_VALUE : COOLDOWN_FINISHED_VALUE;
+		}
+
 		public void StartCooldown()
 		{
-			CanMoveCard = false;
+			IsInCooldown = true;
 			cooldown.fillAmount = COOLDOWN_START_VALUE;
 
 			cooldown.DOFillAmount(COOLDOWN_FINISHED_VALUE, card.cooldown)
 				.SetEase(Ease.Linear)
-				.OnComplete(() => CanMoveCard = true);
+				.OnComplete(() => IsInCooldown = false);
 
 		}
 	}
