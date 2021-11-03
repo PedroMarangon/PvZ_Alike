@@ -23,7 +23,7 @@ namespace S2P_Test
 		/// <summary>
 		/// The percentage amount of health (goes from 0-1)
 		/// </summary>
-		public float Percentage => health / maxHealth;
+		public float Percentage => (float)health / (float) maxHealth;
 		/// <summary>
 		/// The inverse amount of the Health Percentage (ex.: if the Percentage is 0.6, this will return 1 - 0.6, i.e. 0.4)
 		/// </summary>

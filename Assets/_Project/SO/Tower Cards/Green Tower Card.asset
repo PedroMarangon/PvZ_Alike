@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Green Tower Card
   m_EditorClassIdentifier: 
   towerIcon: {fileID: 21300000, guid: a82b836feb58dfb43a9ba7a97c3a8d13, type: 3}
-  towerName: Green Tower
+  towerName: Shooter Turret
   towerPrefab: {fileID: 2987201292214831485, guid: cb91333559570674786ad5de9cbe55d5, type: 3}
-  cost: 9
+  cost: 5
   cooldown: 1

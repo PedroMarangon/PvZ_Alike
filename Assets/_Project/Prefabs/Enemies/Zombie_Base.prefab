@@ -73,7 +73,7 @@ MonoBehaviour:
   whatIsTower:
     serializedVersion: 2
     m_Bits: 64
-  <Damage>k__BackingField: 3
+  <Damage>k__BackingField: 2
 --- !u!114 &9108052219241114209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2b70408bd019d4ba684171a832957f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 5
+  health: 5
 --- !u!114 &178316225223659154
 MonoBehaviour:
   m_ObjectHideFlags: 0

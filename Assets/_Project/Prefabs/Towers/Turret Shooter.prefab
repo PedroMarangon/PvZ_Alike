@@ -42,8 +42,9 @@ GameObject:
   - component: {fileID: 5227450554814406549}
   - component: {fileID: 2268168751975725090}
   - component: {fileID: 886793588053124981}
+  - component: {fileID: 8409271032696591699}
   m_Layer: 6
-  m_Name: TowerBase
+  m_Name: Turret Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,6 +110,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 2.45, z: 2.15}
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &8409271032696591699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2987201292214831485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485491630c0780142aad156ac3be464c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 6227485511482080903}
+  colorGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 0.90000004, b: 0, a: 1}
+    key2: {r: 1, g: 0.90000004, b: 0, a: 0}
+    key3: {r: 0.08620572, g: 1, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 6554
+    ctime1: 33346
+    ctime2: 52428
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 2
 --- !u!1 &3014300381742728389
 GameObject:
   m_ObjectHideFlags: 0

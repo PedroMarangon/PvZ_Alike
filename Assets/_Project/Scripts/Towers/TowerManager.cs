@@ -20,8 +20,10 @@ namespace S2P_Test
 		private const string HIGHLIGHT_COLOR = "_HighlightColor";
 		[SerializeField] private MeshRenderer meshVisualization;
 		[SerializeField] private Transform visualTransform;
+		[SerializeField] private LayerMask mask;
 		[SerializeField] private MeshColor available = new MeshColor(Color.green);
 		[SerializeField] private MeshColor unavailable = new MeshColor(Color.red);
+
 		private Camera cam;
 		private TowerCard card;
 		private GameObject prefab;
@@ -70,7 +72,7 @@ namespace S2P_Test
 		{
 			Ray ray = cam.ScreenPointToRay(InputProvider.MousePosition);
 
-			if (Physics.Raycast(ray, out hit))
+			if (Physics.Raycast(ray, out hit, 999, mask))
 			{
 				if (hit.collider != null && hit.collider.TryGetComponent(out GridPiece piece))
 				{

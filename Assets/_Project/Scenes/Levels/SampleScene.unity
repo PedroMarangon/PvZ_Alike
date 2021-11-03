@@ -497,7 +497,7 @@ MonoBehaviour:
   - {fileID: 643310315721618810, guid: 2faedf38f9e91ea41b6b62b19d4e0910, type: 3}
   - {fileID: 643310315721618810, guid: adb9742cd6f73464e8159e4c4b1b877f, type: 3}
   timeBetweenSpawn: {x: 5, y: 7}
-  startDelay: 0
+  startDelay: 5
 --- !u!4 &129398969
 Transform:
   m_ObjectHideFlags: 0
@@ -1601,7 +1601,7 @@ MonoBehaviour:
   maxMoney: 999999
   startingMoney: 0
   increaseInterval: 1
-  incrementAmount: 2
+  incrementAmount: 100
   moneyText: {fileID: 1741947896}
 --- !u!1001 &604707164
 PrefabInstance:
@@ -5016,6 +5016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshVisualization: {fileID: 284642761}
   visualTransform: {fileID: 1302187520}
+  mask:
+    serializedVersion: 2
+    m_Bits: 1
   available:
     bgColor: {r: 0.12390661, g: 1, b: 0, a: 0.5019608}
     hightlightColor: {r: 2.8895547, g: 11.984314, b: 0.81568646, a: 1}
