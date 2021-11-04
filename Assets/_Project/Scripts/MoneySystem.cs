@@ -10,7 +10,7 @@ namespace S2P_Test
 	{
 		[Min(0), SerializeField] private int maxMoney = 999999;
 		[Min(0), SerializeField] private int startingMoney = 0;
-		[Min(1), SerializeField] private float increaseInterval = 1f;
+		[Min(0.1f), SerializeField] private float increaseInterval = 1f;
 		[Min(1), SerializeField] private int incrementAmount = 2;
 		[SerializeField] private TMP_Text moneyText = null;
 

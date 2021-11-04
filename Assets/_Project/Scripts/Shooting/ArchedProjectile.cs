@@ -24,8 +24,11 @@ namespace S2P_Test
 
 		public void ProcessCollision(GameObject other)
 		{
-			if (other.TryGetComponent(out Health health)) health.Damage(damage);
-			Destroy(gameObject, timeToDestroy);
+			if (other.TryGetComponent(out Health health))
+			{
+				health.Damage(damage);
+				Destroy(gameObject);
+			}else Destroy(gameObject, timeToDestroy);
 		}
 		private void OnCollisionEnter(Collision collision) => ProcessCollision(collision.gameObject);
 	}

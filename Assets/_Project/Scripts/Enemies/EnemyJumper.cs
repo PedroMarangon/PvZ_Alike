@@ -41,8 +41,17 @@ namespace S2P_Test
 			position = pos + Vector3.right * distanceToJump;
 			s.Kill();
 
+			if (attack.IsTowerInFront())
+			{
+				StopMoving();
+				return;
+			}
+
 			OnStartMoving?.Invoke();
 			s = DOTween.Sequence()
+				.AppendCallback(() =>
+				{
+				})
 				.Append(transform.DOJump(position, jumpHeight, 1, jumpDuration).SetEase(easeCurve))
 				.AppendInterval(timeToJump)
 				.OnComplete(() =>
@@ -59,7 +68,9 @@ namespace S2P_Test
 			s.Kill();
 			if (attack.IsTowerInFront())
 			{
-				position += Vector3.right * (distanceToJump / 2);
+				if(transform.position != attack.GetFirstTower().transform.position)
+					position += Vector3.right * (distanceToJump / 2);
+
 				s = DOTween.Sequence()
 				.Append(transform.DOJump(position, jumpHeight, 1, jumpDuration).SetEase(easeCurve))
 				.OnComplete(() =>
