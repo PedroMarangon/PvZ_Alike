@@ -1,12 +1,10 @@
 ﻿// Maded by Pedro M Marangon
 using Cinemachine;
-using UnityEngine;
 
 namespace S2P_Test
 {
 	public class EnemyAttack_SelfDestruct : EnemyAttack
 	{
-
 		protected override void Awake()
 		{
 			base.Awake();

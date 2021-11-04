@@ -9,11 +9,15 @@ namespace S2P_Test
 {
 	public class TowerCard : MonoBehaviour
     {
+		#region Constant Values
 		private const int COOLDOWN_FINISHED_VALUE = 0;
 		private const int COOLDOWN_START_VALUE = 1;
+		private const string HEADER_HUD = "HUD Elements";
+		private const Ease LINEAR_EASE = Ease.Linear;
+		#endregion
 
 		[Required, SerializeField] private SO_TowerCard card = null;
-		[Header("HUD Elements")]
+		[Header(HEADER_HUD)]
 		[Required, SerializeField] private Image icon = null;
 		[Required, SerializeField] private Image cooldown = null;
 		[HorizontalLine]
@@ -57,7 +61,7 @@ namespace S2P_Test
 			cooldown.fillAmount = COOLDOWN_START_VALUE;
 
 			cooldown.DOFillAmount(COOLDOWN_FINISHED_VALUE, card.cooldown)
-				.SetEase(Ease.Linear)
+				.SetEase(LINEAR_EASE)
 				.OnComplete(() => IsInCooldown = false);
 
 		}

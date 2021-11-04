@@ -13,6 +13,7 @@ namespace S2P_Test
 		private const string HEADER_GRID = "Grid Generation";
 		private const string HEADER_SPAWNER = "Spawner Generation";
 		private const string HEADER_DEBUG = "Debugging";
+
 		#endregion
 
 		[Header(HEADER_GRID)]
@@ -28,7 +29,6 @@ namespace S2P_Test
 		[SerializeField] private Color color01 = Color.white;
 		[SerializeField] private Color color02 = Color.black;
 		
-		private Dictionary<Vector2Int, GridPiece> instantiatedGrid = new Dictionary<Vector2Int, GridPiece>();
 
 #if UNITY_EDITOR
 		#region Build / Destroy grid in Unity
@@ -48,7 +48,6 @@ namespace S2P_Test
 			if (GameObject.Find(GRID_PARENT_NAME) != null) DestroyImmediate(GameObject.Find(GRID_PARENT_NAME));
 			if (GameObject.Find(SPAWNER_PARENT_NAME) != null) DestroyImmediate(GameObject.Find(SPAWNER_PARENT_NAME));
 
-			instantiatedGrid = new Dictionary<Vector2Int, GridPiece>();
 		}
 
 		#endregion
@@ -72,10 +71,7 @@ namespace S2P_Test
 					gridPiece.transform.parent = parent;
 					gridPiece.transform.position = point;
 
-					gridPiece.Init(cellSize);					
-					
-					Vector2Int gridPos = new Vector2Int(x, y);
-					instantiatedGrid.Add(gridPos, gridPiece);
+					gridPiece.Init(cellSize);
 				}
 			}
 		}
@@ -105,7 +101,6 @@ namespace S2P_Test
 
 		private void OnDrawGizmos()
 		{
-			if (transform.childCount > 0) return;
 			Vector3 cellSizeVector = new Vector3(cellSize, 0, cellSize);
 			for (int x = 0; x < gridSize.x; x++)
 			{

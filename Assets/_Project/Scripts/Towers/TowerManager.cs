@@ -1,11 +1,11 @@
 ﻿// Maded by Pedro M Marangon
-using System;
 using UnityEngine;
 
 namespace S2P_Test
 {
 	public class TowerManager : MonoBehaviour
 	{
+		//Used for the preview of where to put the towers
 		[System.Serializable]
 		private struct MeshColor
 		{
@@ -13,11 +13,19 @@ namespace S2P_Test
 			[ColorUsage(false, true)] public Color hightlightColor;
 
 			public MeshColor(Color color) => bgColor = hightlightColor = color;
-
 		}
 
+		#region Constant Values
+
+		#region Material Parameters
 		private const string BG_COLOR = "_BGColor";
 		private const string HIGHLIGHT_COLOR = "_HighlightColor";
+		#endregion
+
+		private const int RAYCAST_DISTANCE = 999;
+
+		#endregion
+
 		[SerializeField] private MeshRenderer meshVisualization;
 		[SerializeField] private Transform visualTransform;
 		[SerializeField] private LayerMask gridMask;
@@ -44,7 +52,7 @@ namespace S2P_Test
 		private void OnMouseRightClick()
 		{
 			Ray ray = cam.ScreenPointToRay(InputProvider.MousePosition);
-			if (Physics.Raycast(ray, out RaycastHit hitInfo, 999, towerMask))
+			if (Physics.Raycast(ray, out RaycastHit hitInfo, RAYCAST_DISTANCE, towerMask))
 			{
 				if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out IGridMoveable gridMoveable))
 				{
@@ -78,7 +86,6 @@ namespace S2P_Test
 			}
 		}
 
-
 		public void PrepareForPlacement(GameObject towerPrefab, TowerCard card)
 		{
 			this.card = card;
@@ -89,9 +96,11 @@ namespace S2P_Test
 
 		private void Update()
 		{
+			if (!isShowingPreview) return;
+
 			Ray ray = cam.ScreenPointToRay(InputProvider.MousePosition);
 
-			if (Physics.Raycast(ray, out hit, 999, gridMask))
+			if (Physics.Raycast(ray, out hit, RAYCAST_DISTANCE, gridMask))
 			{
 				if (hit.collider != null && hit.collider.TryGetComponent(out GridPiece piece))
 				{

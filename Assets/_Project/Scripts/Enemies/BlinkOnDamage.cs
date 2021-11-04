@@ -9,6 +9,8 @@ namespace S2P_Test
 	[RequireComponent(typeof(Health))]
 	public class BlinkOnDamage : MonoBehaviour
     {
+		private const int NORMALIZE_INTENSITY = 1;
+
 		[Min(1), SerializeField] private float blinkIntensity = 2;
 		[Min(0.01f), SerializeField] private float blinkDuration = 0.1f;
 		[SerializeField] private Color blinkColor = Color.white;
@@ -30,7 +32,8 @@ namespace S2P_Test
 
 			blinkTimer -= Time.deltaTime;
 			float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
-			float intensity = (lerp * blinkIntensity) + 1;
+			float intensity = (lerp * blinkIntensity) + NORMALIZE_INTENSITY;
+
 			foreach (Renderer rend in renderers)
 			{
 				if (!rend) continue;

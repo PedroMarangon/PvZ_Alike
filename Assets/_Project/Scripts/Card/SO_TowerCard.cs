@@ -1,11 +1,9 @@
 //Maded by Pedro M Marangon
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace S2P_Test
 {
-	[CreateAssetMenu(fileName = "TowerCard", menuName="ScriptableObjects/TowerCard", order=0)]
+	[CreateAssetMenu(fileName = "New_TowerCard", menuName="Tower Card")]
 	public class SO_TowerCard : ScriptableObject
 	{
 		public Sprite towerIcon;

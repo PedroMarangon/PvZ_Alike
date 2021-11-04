@@ -5,6 +5,7 @@ namespace S2P_Test
 {
 	public class EnemyAttack : MonoBehaviour
 	{
+		private const int FIRST_ELEMENT_OF_ARRAY = 0;
 		[SerializeField] private Transform atkPoint = null;
 		[SerializeField] private float atkRadius = 0.25f;
 		[SerializeField] private LayerMask whatIsTower = default;
@@ -17,7 +18,7 @@ namespace S2P_Test
 
 			if (hits.Length > 0)
 			{
-				var hit = hits[0];
+				var hit = hits[FIRST_ELEMENT_OF_ARRAY];
 				if(hit != null && hit.TryGetComponent(out Health hitHealth))
 				{
 					hitHealth.Damage(Damage);
@@ -28,7 +29,7 @@ namespace S2P_Test
 		protected virtual void Awake() => health = GetComponent<Health>();
 
 		public bool IsTowerInFront() => Physics.OverlapSphere(atkPoint.position, atkRadius, whatIsTower).Length > 0;
-		public Collider GetFirstTower() => Physics.OverlapSphere(atkPoint.position, atkRadius, whatIsTower)[0];
+		public Collider GetFirstTower() => Physics.OverlapSphere(atkPoint.position, atkRadius, whatIsTower)[FIRST_ELEMENT_OF_ARRAY];
 
 		private void OnDrawGizmos()
 		{

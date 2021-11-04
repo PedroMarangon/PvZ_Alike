@@ -6,6 +6,7 @@ namespace S2P_Test
 {
 	public class ArchedProjectile : MonoBehaviour, IProjectile
 	{
+		private const int NUMBER_OF_JUMPS = 1;
 		[SerializeField] private float jumpDuration = 5f;
 		[Min(0), SerializeField] private float maxHeight = 2f;
 		[SerializeField] private float timeToDestroy = 3f;
@@ -21,7 +22,7 @@ namespace S2P_Test
 		{
 			damage = dmg;
 			if (!targetPos) return;
-			transform.DOJump(targetPos.position, maxHeight, 1, jumpDuration).SetEase(Ease.Linear);
+			transform.DOJump(targetPos.position, maxHeight, NUMBER_OF_JUMPS, jumpDuration).SetEase(Ease.Linear);
 		}
 
 		public void ProcessCollision(GameObject other)

@@ -8,30 +8,27 @@ namespace S2P_Test
 {
 	public class EnemySpawner : MonoBehaviour
 	{
+
+		#region ValidateInput
+		private const string DOES_IMPLEMENT_INTERFACE = "DoesImplementInterface";
+		private const string VALIDATE_MESSAGE = "All of the GameObjects associated must have a component that implements IEnemyLogic!!";
+		#endregion
+
 		[SerializeField] private List<Transform> spawnPoints = new List<Transform>();
-		[ValidateInput("DoesImplementInterface", "All of the GameObjects associated must have a component that implements IEnemyLogic!!")]
+		[ValidateInput(DOES_IMPLEMENT_INTERFACE, VALIDATE_MESSAGE)]
 		[SerializeField] private List<GameObject> enemies = new List<GameObject>();
+
 		[MinMaxSlider(0.5f, 7f), SerializeField] private Vector2 timeBetweenSpawn = new Vector2(2, 3);
 		[SerializeField] private float startDelay = 1f;
-
 
 		public void SetupSpawnerList()
 		{
 			spawnPoints.Clear();
 
-			foreach (Transform child in transform)
-			{
-				spawnPoints.Add(child);
-			}
-
+			foreach (Transform child in transform) spawnPoints.Add(child);
 		}
 
-		private void Start()
-		{
-			StartCoroutine(Spawn());
-		}
-
-		private IEnumerator Spawn()
+		private IEnumerator Start()
 		{
 			yield return new WaitForSeconds(startDelay);
 			while(true)

@@ -8,8 +8,11 @@ namespace S2P_Test
 {
 	public class EnemyJumper : MonoBehaviour, IEnemyLogic
 	{
+		#region Constant Values
 		private const string HEADER_MOVEMENT = "Movement";
 		private const string HEADER_REFERENCES = "References";
+		private const int NUMBER_OF_JUMPS = 1;
+		#endregion
 
 		[Header(HEADER_MOVEMENT)]
 		[SerializeField] private float jumpDuration = 2f;
@@ -49,17 +52,12 @@ namespace S2P_Test
 
 			OnStartMoving?.Invoke();
 			s = DOTween.Sequence()
-				.AppendCallback(() =>
-				{
-				})
-				.Append(transform.DOJump(position, jumpHeight, 1, jumpDuration).SetEase(easeCurve))
+				.Append(transform.DOJump(position, jumpHeight, NUMBER_OF_JUMPS, jumpDuration).SetEase(easeCurve))
 				.AppendInterval(timeToJump)
 				.OnComplete(() =>
 				{
-					if (!attack.IsTowerInFront())
-						MoveToPosition(position);
-					else
-						StopMoving();
+					if (!attack.IsTowerInFront()) MoveToPosition(position);
+					else StopMoving();
 				});
 		}
 
@@ -72,7 +70,7 @@ namespace S2P_Test
 					position += Vector3.right * (distanceToJump / 2);
 
 				s = DOTween.Sequence()
-				.Append(transform.DOJump(position, jumpHeight, 1, jumpDuration).SetEase(easeCurve))
+				.Append(transform.DOJump(position, jumpHeight, NUMBER_OF_JUMPS, jumpDuration).SetEase(easeCurve))
 				.OnComplete(() =>
 				{
 					attack.Atk();

@@ -1,4 +1,3 @@
-//Maded by Pedro M Marangon
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace S2P_Test.Editor
             EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
         }
 
-        static void HierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
+        private static void HierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
         {
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
 

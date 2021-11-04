@@ -8,6 +8,11 @@ namespace S2P_Test
 {
 	public class MoneySystem : MonoBehaviour
 	{
+		#region Constant Values
+		private const int INFINITE_LOOPS = -1;
+		private const int MIN_MONEY = 0;
+		#endregion
+
 		[Min(0), SerializeField] private int maxMoney = 999999;
 		[Min(0), SerializeField] private int startingMoney = 0;
 		[Min(0.1f), SerializeField] private float increaseInterval = 1f;
@@ -28,30 +33,28 @@ namespace S2P_Test
 			Sequence s = DOTween.Sequence()
 				.AppendInterval(increaseInterval)
 				.AppendCallback(() => money += incrementAmount)
-				.AppendCallback(() => money = Mathf.Clamp(money, 0, maxMoney))
-				.AppendCallback(() => OnMoneyIncrease?.Invoke(money))
-				.SetLoops(-1);
+				.AppendCallback(() => ClampMoney())
+				.SetLoops(INFINITE_LOOPS);
 		}
 
-		public void GiveMoneyBack()
-		{
-			money += moneyToGiveBackIfChange;
-			money = Mathf.Clamp(money, 0, maxMoney);
-			OnMoneyIncrease?.Invoke(money);
-		}
+		public void GiveMoneyBack() => AddMoney(moneyToGiveBackIfChange);
 
 		public void AddMoney(int amnt)
 		{
 			money += amnt;
-			money = Mathf.Clamp(money, 0, maxMoney);
-			OnMoneyIncrease?.Invoke(money);
+			ClampMoney();
 		}
 		public void RemoveMoney(int amnt)
 		{
 			moneyToGiveBackIfChange = amnt;
 
 			money -= amnt;
-			money = Mathf.Clamp(money, 0, maxMoney);
+			ClampMoney();
+		}
+
+		private void ClampMoney()
+		{
+			money = Mathf.Clamp(money, MIN_MONEY, maxMoney);
 			OnMoneyIncrease?.Invoke(money);
 		}
 

@@ -25,9 +25,11 @@ namespace S2P_Test
 			health.OnDeath += Die;
 		}
 
-
+		//Play the attack animation
 		public void StartAttacking() => anim?.PlayAnimationIfNotPlayingAlready(ANIM_ATK);
+		//Play the walk animation
 		public void StartWalking() => anim?.PlayAnimationIfNotPlayingAlready(ANIM_WALK);
+		//Kills the enemy
 		public void Die()
 		{
 			anim?.Play(ANIM_DEATH);

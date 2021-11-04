@@ -7,6 +7,8 @@ namespace S2P_Test
 {
 	public class Health : MonoBehaviour
 	{
+		private const float DEATH_EFFECT_UP_VALUE = 0.2f;
+		private const int MIN_HEALTH = 0;
 		[SerializeField] protected int maxHealth = 10;
 		[SerializeField] protected int moneyToGiveWhenKilled = 0;
 		[SerializeField] private GameObject deathEffect;
@@ -14,21 +16,9 @@ namespace S2P_Test
 
 		#region Properties
 		
-		/// <summary>
-		/// THe max amount of health
-		/// </summary>
 		public int MaxHealth => maxHealth;
-		/// <summary>
-		/// The current amount of health
-		/// </summary>
 		public int HP => health;
-		/// <summary>
-		/// The percentage amount of health (goes from 0-1)
-		/// </summary>
 		public float Percentage => (float)health / (float) maxHealth;
-		/// <summary>
-		/// The inverse amount of the Health Percentage (ex.: if the Percentage is 0.6, this will return 1 - 0.6, i.e. 0.4)
-		/// </summary>
 		public float InversePercentage => 1 - Percentage;
 
 		#endregion
@@ -44,12 +34,9 @@ namespace S2P_Test
 		public Action OnDeath;
 		public Action OnDamaged;
 
-		protected virtual void Start() => health = maxHealth;
-		/// <summary>
-		/// Applies armor to the damage and then damage by that amount
-		/// </summary>
-		/// <param name="amnt">The intented amount do damage (the armor algorithm will change this value)</param>
-		public virtual void Damage(int amnt)
+		private void Start() => health = maxHealth;
+
+		public void Damage(int amnt)
 		{
 			OnDamaged?.Invoke();
 			SetHealth(health - amnt);
@@ -59,18 +46,15 @@ namespace S2P_Test
 		/// Sets the health to a specific value. If the health is less than or equal to 0, kills this object
 		/// </summary>
 		/// <param name="amnt"></param>
-		public virtual void SetHealth(int amnt)
+		public void SetHealth(int amnt)
 		{
-			health = Mathf.Clamp(amnt, 0, maxHealth);
-			if (health <= 0) Die();
+			health = Mathf.Clamp(amnt, MIN_HEALTH, maxHealth);
+			if (health <= MIN_HEALTH) Die();
 		}
 
-		/// <summary>
-		/// Kills the object
-		/// </summary>
-		public virtual void Die()
+		public void Die()
 		{
-			if(deathEffect) Instantiate(deathEffect, transform.position + (Vector3.up * 0.2f), Quaternion.identity);
+			if(deathEffect) Instantiate(deathEffect, transform.position + (Vector3.up * DEATH_EFFECT_UP_VALUE), Quaternion.identity);
 
 			FindObjectOfType<MoneySystem>()?.AddMoney(moneyToGiveWhenKilled);
 

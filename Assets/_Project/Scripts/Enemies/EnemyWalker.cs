@@ -9,9 +9,11 @@ namespace S2P_Test
 {
 	public class EnemyWalker : MonoBehaviour, IEnemyLogic
     {
+		#region Constant Values
 		private const string HEADER_MOVEMENT = "Movement";
 		private const string HEADER_CHECK_STOPPING_POINT = "Check to detect stopping point";
 		private const string HEADER_REFERENCES = "References";
+		#endregion
 
 		[Header(HEADER_MOVEMENT)]
 		[SerializeField] private float speed = 2;

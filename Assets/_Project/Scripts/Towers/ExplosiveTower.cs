@@ -8,21 +8,41 @@ namespace S2P_Test
 	[RequireComponent(typeof(Collider))]
 	public class ExplosiveTower : MonoBehaviour, IGridMoveable
     {
+		#region Constant Values
+		private const float INTERVAL_FOR_ACTIVATION = 0.1f;
+		private const int GIZMO_BOX_MULTIPLIER = 2;
+		#endregion
+
 		[SerializeField] private float explosionRadius = 3f;
 		[SerializeField] private int damage = 5;
 		[SerializeField] private LayerMask explosionLayerMask;
 
-		private void OnValidate()
+		#region Get Collider
+		private Collider col;
+		private Collider Col
 		{
-			GetComponent<Collider>().isTrigger = true;
+			get
+			{
+				if (col == null) col = GetComponent<Collider>();
+				return col;
+			}
 		}
+		#endregion
+
+		private void OnValidate() => Col.isTrigger = true;
 
 		private void Awake()
 		{
 			var s = DOTween.Sequence()
-				.AppendCallback(() => GetComponent<Collider>().enabled = false)
-				.AppendInterval(0.1f)
-				.AppendCallback(() => GetComponent<Collider>().enabled = true);
+				.AppendCallback(() => Col.enabled = false)
+				.AppendInterval(INTERVAL_FOR_ACTIVATION)
+				.AppendCallback(() => Col.enabled = true);
+		}
+
+		public void Move(Transform newGridParent)
+		{
+			transform.parent = newGridParent;
+			transform.localPosition = Vector3.zero;
 		}
 
 		private void OnTriggerEnter(Collider other)
@@ -44,15 +64,7 @@ namespace S2P_Test
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.red;
-			Gizmos.DrawWireCube(transform.position, Vector3.one * explosionRadius * 2);
-
-
-		}
-
-		public void Move(Transform newGridParent)
-		{
-			transform.parent = newGridParent;
-			transform.localPosition = Vector3.zero;
+			Gizmos.DrawWireCube(transform.position, Vector3.one * explosionRadius * GIZMO_BOX_MULTIPLIER);
 		}
 	}
 }
