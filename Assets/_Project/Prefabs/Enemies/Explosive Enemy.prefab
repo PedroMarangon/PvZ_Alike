@@ -229,6 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  moneyToGiveWhenKilled: 10
+  deathEffect: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
   health: 5
 --- !u!114 &4209542999418713575
 MonoBehaviour:

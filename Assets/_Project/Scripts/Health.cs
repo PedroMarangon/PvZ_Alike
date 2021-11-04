@@ -8,6 +8,8 @@ namespace S2P_Test
 	public class Health : MonoBehaviour
 	{
 		[SerializeField] protected int maxHealth = 10;
+		[SerializeField] protected int moneyToGiveWhenKilled = 0;
+		[SerializeField] private GameObject deathEffect;
 		[ProgressBar("maxHealth", EColor.Red), SerializeField, ReadOnly] protected int health;
 
 		#region Properties
@@ -68,6 +70,10 @@ namespace S2P_Test
 		/// </summary>
 		public virtual void Die()
 		{
+			if(deathEffect) Instantiate(deathEffect, transform.position + (Vector3.up * 0.2f), Quaternion.identity);
+
+			FindObjectOfType<MoneySystem>()?.AddMoney(moneyToGiveWhenKilled);
+
 			if(OnDeath != null) OnDeath?.Invoke();
 			else Destroy(gameObject);
 		}

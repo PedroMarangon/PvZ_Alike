@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  deathEffect: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
   health: 10
 --- !u!114 &2268168751975725090
 MonoBehaviour:
@@ -126,7 +127,7 @@ MonoBehaviour:
   projectile: {fileID: 2547765462068491678, guid: d6b0ca4c1192941458982437b6546779, type: 3}
   spawnPoint: {fileID: 2704924092166379532}
   targetPosition: {fileID: 6035176940525577464}
-  projectileInterval: 5
+  projectileInterval: 3
   damage: 1
 --- !u!65 &886793588053124981
 BoxCollider:
@@ -154,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 2143227237219948377}
+  emissionIntensity: 5
   colorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}

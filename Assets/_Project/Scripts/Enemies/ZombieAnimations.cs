@@ -28,8 +28,11 @@ namespace S2P_Test
 
 		public void StartAttacking() => anim?.PlayAnimationIfNotPlayingAlready(ANIM_ATK);
 		public void StartWalking() => anim?.PlayAnimationIfNotPlayingAlready(ANIM_WALK);
-		public void Die() => anim?.Play(ANIM_DEATH);
-
+		public void Die()
+		{
+			anim?.Play(ANIM_DEATH);
+			Destroy(gameObject);
+		}
 	}
 
 }

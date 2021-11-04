@@ -40,6 +40,12 @@ namespace S2P_Test
 			OnMoneyIncrease?.Invoke(money);
 		}
 
+		public void AddMoney(int amnt)
+		{
+			money += amnt;
+			money = Mathf.Clamp(money, 0, maxMoney);
+			OnMoneyIncrease?.Invoke(money);
+		}
 		public void RemoveMoney(int amnt)
 		{
 			moneyToGiveBackIfChange = amnt;

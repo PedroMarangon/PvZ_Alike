@@ -30,11 +30,7 @@ namespace S2P_Test
 			moneySystem?.RemoveMoney(towerCard.Cost);
 		}
 
-		public void OnPointerExit(PointerEventData eventData)
-		{
-			if(towerCard.IsInCooldown || towerCard.DoesHaveEnoughMoney) return;
-			rectTransform.DOScale(1f, 0.1f);
-		}
+		public void OnPointerExit(PointerEventData eventData) => rectTransform.DOScale(1f, 0.1f);
 
 		public void OnPointerEnter(PointerEventData eventData)
 		{
