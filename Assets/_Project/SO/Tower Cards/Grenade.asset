@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d08c7ba9226fa4ea284f4f6d6492dc, type: 3}
   m_Name: Grenade
   m_EditorClassIdentifier: 
-  towerIcon: {fileID: 21300000, guid: 7afefa60d0b339b4bb6491d063ff7546, type: 3}
+  towerIcon: {fileID: 21300000, guid: f555e960b8874d548b39d79ed7af85b3, type: 3}
   towerName: Grenade Launcher
   towerPrefab: {fileID: 2987201292214831485, guid: efbab213f955ff14f858e1062e869098, type: 3}
   cost: 20

@@ -518,6 +518,9 @@ MonoBehaviour:
   - {fileID: 1048006614}
   - {fileID: 1488933101}
   enemies:
+  - {fileID: 643310315721618810, guid: 2faedf38f9e91ea41b6b62b19d4e0910, type: 3}
+  - {fileID: 4209542999418713595, guid: 8c98a870a2edd1442a2bbbc518aa90c5, type: 3}
+  - {fileID: 8651685690400013572, guid: 4076ccf4f91b3aa45aa88916f257ed35, type: 3}
   - {fileID: 643310315721618810, guid: adb9742cd6f73464e8159e4c4b1b877f, type: 3}
   timeBetweenSpawn: {x: 1, y: 3}
   startDelay: 5
@@ -3409,7 +3412,7 @@ MonoBehaviour:
   maxMoney: 999999
   startingMoney: 0
   increaseInterval: 1
-  incrementAmount: 2
+  incrementAmount: 3
   moneyText: {fileID: 1741947896}
 --- !u!4 &1297029046 stripped
 Transform:
@@ -5348,6 +5351,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 181409008}
     m_Modifications:
+    - target: {fileID: 1493756097704264964, guid: 5d20c2549712eaf4cb489ac9672fb398, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 1493756097772704906, guid: 5d20c2549712eaf4cb489ac9672fb398, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

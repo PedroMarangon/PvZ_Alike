@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d08c7ba9226fa4ea284f4f6d6492dc, type: 3}
   m_Name: Shooter
   m_EditorClassIdentifier: 
-  towerIcon: {fileID: 21300000, guid: a82b836feb58dfb43a9ba7a97c3a8d13, type: 3}
+  towerIcon: {fileID: 21300000, guid: 2637fb10007fb7d488c90342ff9e129c, type: 3}
   towerName: Shooter Turret
   towerPrefab: {fileID: 2987201292214831485, guid: cb91333559570674786ad5de9cbe55d5, type: 3}
-  cost: 5
-  cooldown: 1
+  cost: 10
+  cooldown: 2

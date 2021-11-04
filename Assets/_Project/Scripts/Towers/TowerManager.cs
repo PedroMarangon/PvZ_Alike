@@ -69,7 +69,7 @@ namespace S2P_Test
 					}
 					else if(crntSelectedGridMoveable != null)
 					{
-						crntSelectedGridMoveable.Move(piece.transform);
+						crntSelectedGridMoveable?.Move(piece.transform);
 						crntSelectedGridMoveable = null;
 					}
 					meshVisualization.enabled = false;

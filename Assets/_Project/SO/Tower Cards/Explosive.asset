@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d08c7ba9226fa4ea284f4f6d6492dc, type: 3}
   m_Name: Explosive
   m_EditorClassIdentifier: 
-  towerIcon: {fileID: 21300000, guid: e9fc00e1eead4dc4fa2d0392adef86c4, type: 3}
+  towerIcon: {fileID: 21300000, guid: 80dfa8cb8a524a44b9423e81a6ec06a4, type: 3}
   towerName: Explosive Tower
   towerPrefab: {fileID: 3098147356187010617, guid: ef4e03c1b92f0be489c1de63a90eab68, type: 3}
   cost: 30
