@@ -51,6 +51,8 @@ namespace S2P_Test
 
 		private void OnMouseRightClick()
 		{
+			if (!cam) cam = Camera.main;
+
 			Ray ray = cam.ScreenPointToRay(InputProvider.MousePosition);
 			if (Physics.Raycast(ray, out RaycastHit hitInfo, RAYCAST_DISTANCE, towerMask))
 			{
