@@ -68,7 +68,7 @@ namespace S2P_Test
 		/// </summary>
 		public virtual void Die()
 		{
-			if(OnDeath != null) OnDeath.Invoke();
+			if(OnDeath != null) OnDeath?.Invoke();
 			else Destroy(gameObject);
 		}
 	}

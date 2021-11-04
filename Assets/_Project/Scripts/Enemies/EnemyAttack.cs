@@ -25,7 +25,7 @@ namespace S2P_Test
 			}
 		}
 
-		private void Awake() => health = GetComponent<Health>();
+		protected virtual void Awake() => health = GetComponent<Health>();
 
 		public bool IsTowerInFront() => Physics.OverlapSphere(atkPoint.position, atkRadius, whatIsTower).Length > 0;
 		public Collider GetFirstTower() => Physics.OverlapSphere(atkPoint.position, atkRadius, whatIsTower)[0];

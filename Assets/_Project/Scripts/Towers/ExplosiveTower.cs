@@ -1,4 +1,5 @@
 // Maded by Pedro M Marangon
+using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
 
@@ -35,6 +36,7 @@ namespace S2P_Test
 					if (enemy.TryGetComponent(out Health enemyHealth))
 						enemyHealth.Damage(damage);
 				}
+				GetComponent<CinemachineImpulseSource>()?.GenerateImpulse();
 				Destroy(gameObject);
 			}
 		}

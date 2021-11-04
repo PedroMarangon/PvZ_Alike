@@ -9,19 +9,17 @@ namespace S2P_Test
 	[RequireComponent(typeof(Health))]
 	public class BlinkOnDamage : MonoBehaviour
     {
-		private const string EMISSION = "_EmissionColor";
-
 		[Min(1), SerializeField] private float blinkIntensity = 2;
 		[Min(0.01f), SerializeField] private float blinkDuration = 0.1f;
 		[SerializeField] private Color blinkColor = Color.white;
-		private List<SkinnedMeshRenderer> renderers;
+		private List<Renderer> renderers;
 		private Health health;
 		private float blinkTimer = -1f;
 
 		private void Awake()
         {
 			health = GetComponent<Health>();
-			renderers = GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
+			renderers = GetComponentsInChildren<Renderer>().ToList();
 
 			health.OnDamaged += Blink;
 		}
@@ -33,7 +31,7 @@ namespace S2P_Test
 			blinkTimer -= Time.deltaTime;
 			float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
 			float intensity = (lerp * blinkIntensity) + 1;
-			foreach (SkinnedMeshRenderer rend in renderers)
+			foreach (Renderer rend in renderers)
 			{
 				if (!rend) continue;
 				rend.material.color = blinkColor * intensity;
